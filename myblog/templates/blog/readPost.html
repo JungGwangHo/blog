@@ -1,0 +1,6 @@
+{% extends 'blog/postlayout.html' %}
+{% block content %}
+<a href="{% url 'editPost' id=post.id %}">글 수정</a>
+				<h1>제목 : {{ post.title }}</h1>
+				<p>{{ post.content|linebreaks }}</p>
+{% endblock content %}

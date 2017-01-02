@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+		</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<script src="{% static 'js/jquery-3.1.1.min.js'%} "></script>
+		<script src="{% static 'js/join.js'%} "></script>
+	</head>
+	<body>
+		<form id="signup" method="post" action="{% url 'signup' %}">{% csrf_token %}
+			<div class="input-group">
+			{{ userform.username }}<button type="button" id="duplcheck" class="btn btn-default">중복확인</button><br>
+			{{ userform.email }}<br>
+			{{ userform.password1 }}<br>
+			{{ userform.password2 }}<br>
+			<button type="submit" id="submit" class="btn btn-success">회원가입</button>
+		</div>
+	</body>
+</html>
