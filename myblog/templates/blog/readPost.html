@@ -1,6 +1,21 @@
 {% extends 'blog/postlayout.html' %}
 {% block content %}
 <a href="{% url 'editPost' id=post.id %}">글 수정</a>
-				<h1>제목 : {{ post.title }}</h1>
-				<p>{{ post.content|linebreaks }}</p>
+<div class="post">
+		{% if post.published_date %}
+				<div class="date">
+						{{ post.published_date }}
+				</div>
+		{% endif %}
+		<h1>{{ post.title }}</h1>
+		<div id="content"></div>
+</div>
+<script>
+var content = '{{post.content}}';
+content = content.replace(/\&lt;/g,"<");    //&lt;를 <로 바꿈
+content = content.replace(/\&gt;/g, ">");   //&gt;를 >로 바꿈
+content = content.replace(/\&quot;/g,"");   //&quot;를 공백으로 바꿈
+$("#content").append(content);
+</script>
+
 {% endblock content %}

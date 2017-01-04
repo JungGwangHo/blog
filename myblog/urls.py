@@ -8,6 +8,6 @@ urlpatterns = [
 
     url(r'^$', views.postList, name='postList'),
     url(r'^readpost/(?P<id>\d+)/$',views.readPost, name='readPost'),
-    url(r'^writepost/$', views.WritePostView.as_view(), name='writepost'),
+    url(r'^writePost/$', views.WritePostView.as_view(), name='writePost'),
     url(r'^editPost/(?P<id>[0-9]+)/$', views.editPost, name='editPost'),
 ]

@@ -3,10 +3,19 @@ from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+#summernote
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote import fields as summer_fields
 class PostForm(forms.ModelForm):
+    #summernote
+    fields = summer_fields.SummernoteTextFormField(error_messages={'required':(u'데이터를 입력해주세요'),})
     class Meta:
         model = Post
-        fields = ('title', 'content',)
+        fields = ('title','fields','content','textonly',)
+        widgets= {
+             'foo' : SummernoteWidget(),
+             'bar' : SummernoteInplaceWidget(),
+        }
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label = "Email")

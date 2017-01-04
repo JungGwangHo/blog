@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myblog',
+    'django_summernote',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,4 +111,6 @@ STATICFILES_DIRS = (
    # ('byebye', os.path.join(BASE_DIR, 'static2'),),
 )
 # STATIC_ROOT = os.path.join(BASE_DIR, 'collected_statics')
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
 LOGIN_REDIRECT_URL = '/post/'

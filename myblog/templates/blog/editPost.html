@@ -1,9 +1,23 @@
 {% extends 'blog/postlayout.html' %}
+{% load staticfiles %}
 
 {% block content %}
     <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+    <form method="POST" id="frm">{% csrf_token %}
+        제목 : {{ form.title|safe }}<br>
+        {{ form.fields|safe }}
+        {{ form.content|safe }}
+        {{ form.textonly|safe }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+    <script>
+      var content = $("#id_content").val();
+      content = content.replace(/\&lt;/g,"<");    //&lt;를 <로 바꿈
+      content = content.replace(/\&gt;/g, ">");   //&gt;를 >로 바꿈
+      content = content.replace(/\&quot;/g,"");   //&quot;를 공백으로 바꿈
+      $("#id_fields_iframe").on("load",function(){
+        $(this).contents().find(".note-editable.panel-body").html(content);
+      });
+    </script>
+    <script src="{% static 'js/content.js'%}"></script>
 {% endblock %}
